@@ -2,149 +2,186 @@
 <html lang="uz">
 <head>
 <meta charset="UTF-8">
-<title>Madina 💖</title>
+<title>For Madina 💖</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
-body{
-  margin:0;
-  font-family:Arial;
-  background: linear-gradient(135deg,#ff4d6d,#ffb3c1);
-  text-align:center;
-  color:white;
-  overflow:hidden;
+body {
+    margin: 0;
+    font-family: Arial;
+    background: linear-gradient(135deg, #ff4d6d, #ffb3c1, #ffd6e0);
+    overflow: hidden;
+    text-align: center;
+    color: white;
 }
 
-/* LOGIN */
-#login{
-  position:fixed;
-  width:100%;
-  height:100%;
-  background:#000;
-  display:flex;
-  justify-content:center;
-  align-items:center;
+/* PAGE SYSTEM */
+.page {
+    display: none;
+    padding: 40px;
 }
 
-.box{
-  background:rgba(255,255,255,0.1);
-  padding:25px;
-  border-radius:15px;
+.active {
+    display: block;
+    animation: fadeIn 1s ease-in-out;
 }
 
-input{
-  padding:10px;
-  border:none;
-  border-radius:10px;
-  text-align:center;
+/* TITLE */
+h1 {
+    font-size: 52px;
+    text-shadow: 0 0 20px rgba(255,255,255,0.7);
 }
 
-button{
-  margin-top:10px;
-  padding:10px 20px;
-  border:none;
-  border-radius:20px;
-  background:white;
-  color:#ff4d6d;
-  cursor:pointer;
-  font-weight:bold;
+/* BUTTONS */
+button {
+    margin: 10px;
+    padding: 15px 28px;
+    border: none;
+    border-radius: 35px;
+    font-size: 18px;
+    cursor: pointer;
+    background: white;
+    color: #ff4d6d;
+    font-weight: bold;
+    transition: 0.3s;
+    box-shadow: 0 0 15px rgba(255,255,255,0.3);
 }
 
-/* PAGE */
-.page{
-  display:none;
-  padding:30px;
+button:hover {
+    transform: scale(1.12);
+    box-shadow: 0 0 25px rgba(255,255,255,0.7);
 }
 
-.active{display:block;}
-
-h1{
-  font-size:40px;
+/* TEXT */
+.love-text {
+    font-size: 18px;
+    max-width: 600px;
+    margin: auto;
+    line-height: 1.7;
 }
 
-/* HEART */
-.heart{
-  position:absolute;
-  top:-10px;
-  font-size:16px;
-  animation:fall 5s linear infinite;
+/* ANIMATION */
+@keyframes fadeIn {
+    from {opacity: 0; transform: translateY(20px);}
+    to {opacity: 1; transform: translateY(0);}
 }
 
-@keyframes fall{
-  to{transform:translateY(110vh);opacity:0;}
+/* HEARTS */
+.heart {
+    position: absolute;
+    color: red;
+    animation: fall linear infinite;
+    font-size: 18px;
+    opacity: 0.8;
 }
 
+@keyframes fall {
+    0% {transform: translateY(-10%); opacity: 1;}
+    100% {transform: translateY(110vh); opacity: 0;}
+}
+
+/* BACKGROUND GLOW EFFECT */
+body::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(255,255,255,0.15), transparent);
+    animation: glowBg 6s infinite alternate;
+}
+
+@keyframes glowBg {
+    from {transform: scale(1);}
+    to {transform: scale(1.2);}
+}
+
+/* FINAL PAGE */
+.final {
+    background: radial-gradient(circle, #1a001f, #ff4d6d);
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* MUSIC ICON */
+.music {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    font-size: 14px;
+    opacity: 0.7;
+}
 </style>
 </head>
 
 <body>
 
-<!-- LOGIN -->
-<div id="login">
-  <div class="box">
-    <h3>🔐 Parol kiriting</h3>
-    <input type="password" id="pass">
-    <br>
-    <button onclick="check()">Kirish</button>
-  </div>
-</div>
-
 <!-- PAGE 1 -->
-<div class="page active" id="p1">
-  <h1>Salom Madina 💖</h1>
-  <p>Siz uchun maxsus sayt</p>
-  <button onclick="go(2)">Ochish</button>
+<div class="page active" id="page1">
+    <h1>Salom Madina 💖</h1>
+    <p>Nu Siz uchun marhamat 👇</p>
+    <button onclick="showPage(2)">Ochish 💌</button>
 </div>
 
 <!-- PAGE 2 -->
-<div class="page" id="p2">
-  <h2>💖 Minnatdorchilik</h2>
+<div class="page" id="page2">
 
-  <p>Siz mening hayotimda borligingiz uchun rahmat</p>
-  <p>Siz menga kuch berasiz</p>
-  <p>Siz bilan hamma narsa chiroyli</p>
-  <p>Siz eng qadrli insonimsiz</p>
+    <div class="love-text">
+        <p>🌹 Siz mening hayotimda borligingiz uchun minnatdorman</p>
+        <p>🌹 Siz menga kuch va ilhom berasiz</p>
+        <p>🌹 Siz bilan har kun yanada chiroyliroq</p>
+        <p>🌹 Sizning tabassumingiz eng katta baxtim</p>
+        <p>🌹 Siz bo‘lmasangiz dunyo bo‘shdek tuyuladi</p>
+        <p>🌹 Men Sizning baxtli bo‘lishingizni xohlayman</p>
+        <p>🌹 Siz mening eng qadrli insonimsiz</p>
+        <p>🌹 Siz borligingiz uchun rahmat</p>
+    </div>
 
-  <p>❤️ Seni sevaman | I love you | Je t’aime ❤️</p>
+    <div style="margin-top:20px; font-size:18px;">
+        ❤️ I love you | Je t’aime | Te amo | Ich liebe dich | Seni sevaman ❤️
+    </div>
 
-  <button onclick="go(1)">Orqaga</button>
+    <button onclick="showPage(1)">🔙 Boshiga qaytish</button>
+    <button onclick="showPage(3)">➡️ Davom etish</button>
+
+    <p style="margin-top:15px;">✨ Bunyodbek tomonidan Siz uchun maxsus ✨</p>
 </div>
+
+<!-- PAGE 3 -->
+<div class="page final" id="page3">
+
+    <h1>💖 BUNYODBEK & MADINA 💖</h1>
+    <p style="font-size:20px;">
+        💞 Sevgingiz abadiy bo‘lsin 💞
+    </p>
+
+    <button onclick="showPage(1)">🔙 Boshiga qaytish</button>
+</div>
+
+<div class="music">🎵 Romantic Mode</div>
 
 <script>
 
-const password = "Madina1117";
-
-/* LOGIN */
-function check(){
-  let v = document.getElementById("pass").value;
-  if(v === password){
-    document.getElementById("login").style.display="none";
-    startHearts();
-  } else {
-    alert("❌ Parol noto‘g‘ri");
-  }
+// PAGE SWITCH
+function showPage(num) {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.getElementById('page' + num).classList.add('active');
 }
 
-/* PAGE SWITCH */
-function go(n){
-  document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
-  document.getElementById("p"+n).classList.add("active");
+// HEART + FLOWER EFFECT
+function createHeart() {
+    const el = document.createElement("div");
+    el.classList.add("heart");
+    el.innerHTML = Math.random() > 0.5 ? "❤️" : "🌸";
+    el.style.left = Math.random() * 100 + "vw";
+    el.style.animationDuration = (3 + Math.random() * 5) + "s";
+    document.body.appendChild(el);
+
+    setTimeout(() => el.remove(), 7000);
 }
 
-/* HEARTS */
-function heart(){
-  let h=document.createElement("div");
-  h.classList.add("heart");
-  h.innerHTML="❤️";
-  h.style.left=Math.random()*100+"vw";
-  h.style.animationDuration=(3+Math.random()*3)+"s";
-  document.body.appendChild(h);
-  setTimeout(()=>h.remove(),6000);
-}
-
-function startHearts(){
-  setInterval(heart,300);
-}
+setInterval(createHeart, 180);
 
 </script>
 
