@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<title>For Madina 💖 ULTIMATE</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial;
+    background: linear-gradient(135deg, #ff4d6d, #ffb3c1, #ffd6e0);
+    overflow: hidden;
+    text-align: center;
+    color: white;
+}
+
+/* LOGIN */
+#loginScreen {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, #ff4d6d, #000);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+#loginBox {
+    background: rgba(255,255,255,0.12);
+    padding: 30px;
+    border-radius: 20px;
+    backdrop-filter: blur(12px);
+    box-shadow: 0 0 30px rgba(255,255,255,0.2);
+}
+
+input {
+    padding: 12px;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    text-align: center;
+}
+
+button {
+    margin-top: 10px;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    font-weight: bold;
+    background: white;
+    color: #ff4d6d;
+    transition: 0.3s;
+    box-shadow: 0 0 20px rgba(255,255,255,0.3);
+}
+
+button:hover {
+    transform: scale(1.15);
+    box-shadow: 0 0 30px white;
+}
+
+/* PAGES */
+.page {
+    display: none;
+    padding: 40px;
+}
+
+.active {
+    display: block;
+    animation: fadeIn 1s ease-in-out;
+}
+
+h1 {
+    font-size: 52px;
+    text-shadow: 0 0 25px rgba(255,255,255,0.7);
+}
+
+/* TEXT TYPE EFFECT */
+.typing {
+    font-size: 24px;
+    margin-top: 10px;
+    min-height: 30px;
+}
+
+/* HEARTS */
+.heart {
+    position: absolute;
+    animation: fall linear infinite;
+    font-size: 18px;
+}
+
+@keyframes fall {
+    0% {transform: translateY(-10%); opacity: 1;}
+    100% {transform: translateY(110vh); opacity: 0;}
+}
+
+/* BACKGROUND EFFECT */
+body::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(255,255,255,0.2), transparent);
+    animation: glowBg 6s infinite alternate;
+}
+
+@keyframes glowBg {
+    from {transform: scale(1);}
+    to {transform: scale(1.3);}
+}
+
+/* FINAL */
+.final {
+    background: radial-gradient(circle, #1a001f, #ff4d6d);
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* MUSIC BUTTON */
+#musicBtn {
+    position: fixed;
+    bottom: 15px;
+    right: 15px;
+    padding: 10px 15px;
+    border-radius: 20px;
+    font-size: 12px;
+}
+</style>
+</head>
+
+<body>
+
+<!-- 🔐 LOGIN -->
+<div id="loginScreen">
+    <div id="loginBox">
+        <h2>🔐 Kirish</h2>
+        <input type="password" id="pass" placeholder="Parol">
+        <br>
+        <button onclick="checkPassword()">Kirish 💖</button>
+    </div>
+</div>
+
+<!-- PAGE 1 -->
+<div class="page active" id="page1">
+    <h1 id="typingText"></h1>
+    <div class="typing">💖 Siz uchun maxsus sayt</div>
+    <button onclick="showPage(2)">Ochish 💌</button>
+</div>
+
+<!-- PAGE 2 -->
+<div class="page" id="page2">
+
+<h2>💖 Minatdorchilik 💖</h2>
+
+<p>🌹 Siz mening hayotimda borligingiz uchun minnatdorman</p>
+<p>🌹 Siz menga kuch va ilhom berasiz</p>
+<p>🌹 Siz bilan har kun yanada chiroyliroq</p>
+<p>🌹 Sizning tabassumingiz eng katta baxtim</p>
+<p>🌹 Siz bo‘lmasangiz dunyo bo‘shdek tuyuladi</p>
+<p>🌹 Men Sizning baxtli bo‘lishingizni xohlayman</p>
+<p>🌹 Siz mening eng qadrli insonimsiz</p>
+<p>🌹 Siz borligingiz uchun rahmat</p>
+
+<p style="margin-top:15px;">
+❤️ I love you | Je t’aime | Te amo | Ich liebe dich | Seni sevaman ❤️
+</p>
+
+<button onclick="showPage(1)">🔙</button>
+<button onclick="showPage(3)">➡️</button>
+
+</div>
+
+<!-- PAGE 3 -->
+<div class="page final" id="page3">
+<h1>💖 BUNYODBEK & MADINA 💖</h1>
+<p>Sevgingiz abadiy bo‘lsin 💞</p>
+<button onclick="showPage(1)">🔙</button>
+</div>
+
+<!-- MUSIC -->
+<audio id="music" loop>
+<source src="https://cdn.pixabay.com/audio/2022/10/16/audio_12b6b1d0f7.mp3" type="audio/mp3">
+</audio>
+
+<button id="musicBtn" onclick="toggleMusic()">🎵 Music</button>
+
+<script>
+
+const password = "Madina1117";
+
+/* LOGIN */
+function checkPassword() {
+    let val = document.getElementById("pass").value;
+    if(val === password) {
+        document.getElementById("loginScreen").style.display = "none";
+        startEffects();
+        typeText();
+    } else {
+        alert("❌ Parol noto‘g‘ri!");
+    }
+}
+
+/* PAGE SWITCH */
+function showPage(num) {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.getElementById('page' + num).classList.add('active');
+}
+
+/* HEARTS */
+function createHeart() {
+    const el = document.createElement("div");
+    el.classList.add("heart");
+    el.innerHTML = Math.random() > 0.5 ? "❤️" : "🌸";
+    el.style.left = Math.random() * 100 + "vw";
+    el.style.animationDuration = (3 + Math.random() * 5) + "s";
+    document.body.appendChild(el);
+    setTimeout(() => el.remove(), 7000);
+}
+
+/* EFFECTS START */
+function startEffects() {
+    setInterval(createHeart, 150);
+}
+
+/* MUSIC */
+function toggleMusic() {
+    let music = document.getElementById("music");
+    if(music.paused) music.play();
+    else music.pause();
+}
+
+/* TYPE EFFECT */
+let text = "Salom Madina 💖";
+let i = 0;
+function typeText() {
+    let el = document.getElementById("typingText");
+    let interval = setInterval(() => {
+        if(i < text.length) {
+            el.innerHTML += text.charAt(i);
+            i++;
+        } else {
+            clearInterval(interval);
+        }
+    }, 120);
+}
+
+</script>
+
+</body>
+</html>
